@@ -1,0 +1,40 @@
+<!-- allInOneJS_1.html -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Edition</title>
+ </head>
+ <body>
+    <script>
+        name=prompt("Enter your name","Suzie")
+        x=`Hi, how're you miss ${name}`
+        console.log(x)
+        let len=x.length
+        console.log(len)
+
+        if(len>30){
+            alert("Time MAchine")
+        }else{
+            alert("RajeshWar Machine")
+        }
+
+        switch(len>30){
+            case 1:
+                alert("Time MAchine")
+                break;
+            case 2:
+                alert("RajeshWar Machine")
+            case 3:
+                alert("Patel Machine")
+            default:
+                alert("Default Machine")
+        }   
+
+        isBirthday=false    ;
+        const greeting = isBirthday? "Happy birthday Mrs. Smith — we hope you have a great day!": "Good morning Mrs. Smith.";
+        console.log(greeting)
+    </script>
+</body>
+</html>
