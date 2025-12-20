@@ -1,0 +1,10 @@
+*{
+    outline: 2px solid red;
+    padding:2px;
+    margin:3px;
+}
+#diddy{
+    border: 2px solid wheat;
+    background-color: brown;
+    color:beige;
+}

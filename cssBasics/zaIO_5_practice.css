@@ -1,0 +1,14 @@
+.tnt{
+    display:flex;
+    height: 300px;
+    width:300px;
+    background-color: plum;
+    justify-content: center;
+    align-items: center;
+}
+.tnt2{
+    background-color: aliceblue;
+    border:2px solid black;
+    height: 50px;
+    width: 50px;
+}

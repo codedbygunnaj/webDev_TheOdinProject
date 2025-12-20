@@ -1,0 +1,32 @@
+/* zaIO_5_practice2.css */
+.tnt{
+    display:flex;
+    height: 100px;
+    background-color: plum;
+    align-items: center;
+    justify-content:space-between;
+}
+.tnt-3{
+    display:flex;
+    flex-wrap: wrap
+}
+tnt4{
+    width: 20px;
+}
+.tnt2{
+    background-color: aliceblue;
+    border:2px solid black;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin:5px;
+    font-weight: bold;
+    color:blue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.tnt1{
+    flex:0.3;
+    font-weight: bolder;
+    color:red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -1,0 +1,52 @@
+*{
+    background-color: black;
+    color: snow;
+}
+div{
+    font-weight: 100; 
+}
+/* selector{property:value;} */
+/* . for class and # for id */
+
+/* 2 classes read and unread with few same properties and other unique props then: */
+.read,.unread{
+    color:blueviolet;
+    background-color: white;
+}
+.read{
+    height: 20;
+    /* uniqueProperties */
+}
+.unread{
+    height: 15;
+    /* uniqueProperties */
+}
+
+/* Chaining: connecting 2 or more selectors of diff types like class,id,type BUT YOU CAN'T CHAIN 2 OR MORE "TYPE SELECTORS" LIKE DIV AND P because it'll form <divp> which doesn't makes any sense but you can chain other ones!*/
+
+/* this will select the element having both read and unread class */
+.read.unread{
+    font-weight: 100;
+}
+/* this will select the element having a read class and an unread id  */
+.read#unread{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 
+Descendent Combinators: Selects the element with class x only if it's ancestors had class y with them!
+
+<div class=y>
+    <div class=x>
+        <p>Hey!</p>
+    </div>
+</div>
+
+<div class=x></div>
+*/
+
+.y .x{
+    font:bold;
+}
+
+/*  Applicable to first div only because of descendent technology! */

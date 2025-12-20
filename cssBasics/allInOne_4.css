@@ -1,0 +1,17 @@
+.container{
+    border:3px solid blue;
+    background-color: palevioletred;
+    display: flex;
+    height: 140px;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    gap:1em;
+}
+.item{
+    border: 3px solid rgb(56, 59, 62);
+    background-color: skyblue;
+    width: 60px;
+    height: 60px;
+    flex:1;
+}

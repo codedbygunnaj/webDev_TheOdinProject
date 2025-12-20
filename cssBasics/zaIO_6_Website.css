@@ -1,0 +1,170 @@
+/* Reset and base (small, safe change) */
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+html,body{ height: 100%; }
+body{ font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e6eef6; background: #ffffff; }
+
+.headerSection{
+    background-color: rgb(2, 2, 40);
+    display: flex;
+    flex-direction: column;
+}
+.headerSection-1{
+    display: flex;
+}
+.headerSection-1-kid1{
+    display: inline;
+    flex:1;
+    align-self: flex-start;
+}
+.headerSection-1-kid2{ 
+    display: flex;
+    gap:3px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.headerSection-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    justify-content: space-around;
+}
+.headerSection-2 img{
+    width: 400px; /* set the displayed width */
+    height: auto;  /* preserve aspect ratio */
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.headerSection-2 button{
+    background-color: blue;
+    color:white;
+    border:2px solid whitesmoke;
+    border-radius: 5px;
+    padding:5px;
+    margin:2px;
+    font-weight: bold;
+}
+.main-section-1{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main-section-1 h2{
+    margin-top:4px;
+    font-weight: bolder;
+    color:black
+}
+.main-section-1-kid{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:2em;
+    margin-top:4px;
+}
+.main-section-1-kid-box{
+    border:2px solid blue;
+    background-color: transparent;
+    border-radius: 6px;
+    width: 100px;
+    height: 100px;
+}
+.main-section-1-kid-box-2{
+    border:transparent;
+    background-color: transparent;
+    border-radius: 6px;
+    width: 105px;
+    height: 105px;
+    color:black;
+}
+.main-section-2{
+    background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main-section-2 > h1{
+    text-align: left;
+    width:60vw;
+    color:black;
+    font-family: 'Times New Roman', Times, serif;
+}
+.main-section-2 > h4{
+    align-self:flex-end;
+    margin-right: 20em;
+    font-weight: bolder;
+    color:black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.main-section-3{
+    display: flex;
+    background: #3b82f6; /* blue */
+    color: #fff;
+    padding: 28px 32px;
+    border-radius: 12px;
+    margin: 36px 48px;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+}
+.main-section-3-mainBox{
+    display: flex;
+    gap:20px;
+    
+}
+.main-section-3-mainBox div{
+    flex:1;
+}
+.main-section-3-mainBox button{
+    width: 100px;
+    background-color: #3b82f6;
+    color:white;
+    font-weight: bolder;
+    border:2px solid white;
+    border-radius: 5px;
+}
+/* 
+.learning__content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto; /* text | button */
+  align-items: center; /* vertically center */
+  gap: 20px;
+}
+.learning__text h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.learning__text h5 {
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.95;
+}
+.learning__btn {
+  justify-self: end; /* works because parent is grid */
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.learning__btn:hover { opacity: 0.95; transform: translateY(-1px); }
+
+/* Responsive: stack on small screens */
+@media (max-width: 640px) {
+  .learning {
+    padding: 20px;
+    margin: 20px;
+  }
+  .learning__content {
+    grid-template-columns: 1fr;
+    text-align: left;
+    gap: 12px;
+  }
+  .learning__btn { justify-self: start; }
+} */
