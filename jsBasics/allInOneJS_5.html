@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+</head>
+<body>
+    <input id="textBox" type="text">
+    <div id="output"></div>
+    <script>
+        let textBox=document.getElementById("textBox")
+        let output=document.getElementById("output")
+        
+        textBox.addEventListener("keydown",event=>console.log(`You Pressed: ${event.key}`))
+        textBox.addEventListener("keydown",event=>{
+            output.textContent="You pressed: "+event.key
+            console.log(`You Pressed: ${event.key}`)
+        })
+        let og=[4,5,6,7,8]
+        const doubleOG=og.map(i=>i*2);//means return i*2
+        console.log(og)
+        console.log(doubleOG)
+
+        //anonymous fn-> w/o names:
+        (function(apple){
+            alert(apple)
+        })
+        //usually declared within another function, let's see:
+
+        textBox.addEventListener("keydown",function(keyStroke){
+            let x="Pressed key: "+keyStroke
+            console.log(x)            
+        })
+
+        //arrow fn-> removes usage of function keyword too:
+        textBox.addEventListener("keydown",(keyStroke)=>{
+            let x="Pressed key: "+keyStroke
+            console.log(x)            
+        })
+        //if only 1 parameter: can ignore brackets too:
+        textBox.addEventListener("keydown",keyStroke=>{
+            let x="Pressed key: "+keyStroke
+            console.log(x)            
+        })
+        //if 1 liner: remove braces too :. it'll be:
+        textBox.addEventListener("keydown",keyStroke=>console.log(`Pressed: ${keyStroke}`))
+
+    </script>
+</body>
+</html>

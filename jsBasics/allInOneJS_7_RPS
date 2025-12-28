@@ -1,0 +1,12 @@
+pseudocode:
+    : 2 Player (Bot and Being)
+    : Random Moves for the Bot
+    : If human, both get indiv turns
+    : RPS format:
+        :if rock->paper (pt to II)
+        :if rock->scissors (pt to I)
+        :if scissors->paper (pt to I)
+        :if scissors->rock (pt to II)
+        :if paper->scissors (pt to II)
+        :if paper->rock (pt to I)
+        

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fizzBuzz</title>
+</head>
+<body>
+    <div id="maze"></div>
+    <script>
+        maze=document.getElementById("maze")
+        let val=parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "))
+        for (let i = 1; i <= val; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                maze.textContent += "FizzBuzz\n";
+            } else if (i % 3 === 0) {
+                maze.textContent += "Fizz\n";
+            } else if (i % 5 === 0) {
+                maze.textContent += "Buzz\n";
+            } else {
+                maze.textContent += i+"\n";
+            }
+        }
+    </script>
+</body>
+</html>

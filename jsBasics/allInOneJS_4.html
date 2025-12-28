@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Functions</title>
+</head>
+<body>
+    <script>
+        function add7(num){
+            return num+7
+        }
+        console.log(add7(25))
+        
+        function multiply(num1,num2){
+            return num1*num2
+        }
+        console.log(multiply(25,5))
+
+        function caps(str){
+            let res=""
+            for(let i=0;i<str.length;i++){
+                let code=str.charCodeAt(i);
+                if(i===0){
+                    if(code>=65 && code<=90){
+                        res+=str[i];
+                    }else{
+                        res+=String.fromCharCode(code-32);
+                    }
+                }else{
+                    if(code>=65 && code<=90){
+                        res+=String.fromCharCode(code+32); //differentiate btw fromCharCode and charCodeAt, what's code
+                    }else{
+                        res+=str[i];//can usw Code too?
+                    }
+                }
+            }
+            return res;
+        }
+        console.log(caps("GUGULU"))
+        console.log(caps("gULULU"))
+        console.log(caps("gOOgLi"))
+
+        function capsEasy(str){
+            return str[0].toUpperCase()+str.slice(1).toLowerCase();
+        }
+        console.log(capsEasy("GUGULU"))
+        console.log(capsEasy("gULULU"))
+        console.log(capsEasy("gOOgLi"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+    <style>
+        .rps{
+            background-color: rgba(46, 2, 2, 0.608);
+            color:beige;
+            border: 3px solid yellowgreen;
+            margin:3px;
+            height: 30px;
+            width: 100px;
+            border-radius: 10px;    
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <P>Press a Button:</P>
+    <button class="rps">Rock</button>
+    <button class="rps">Paper</button>
+    <button class="rps">Scissors</button>
+    <div id="winner"></div>
+    <script>
+        let max=3
+        let numByBot=Math.floor(Math.random()*max);
+        let botVal=""
+        let winner=document.getElementById("winner");
+
+        const buttons=document.querySelectorAll(".rps");
+        buttons.forEach(button=>{
+            button.addEventListener("click",(event)=>{
+                const humanChoice=event.target.textContent.toLowerCase();
+                console.log(`Human choice is : ${humanChoice}`);
+                if(numByBot==0){
+                    botVal="rock"
+                }else if(numByBot==1){
+                    botVal="paper"
+                }else{
+                    botVal="scissors"
+                }
+                console.log(`Bot choice is : ${botVal}`);
+
+                if(humanChoice=="rock"){
+                    if(botVal=="scissors"){
+                        winner.textContent="The winner is: Human";
+                    }else if(botVal=="paper"){
+                        winner.textContent="The winner is: Bot";
+                    }else{
+                        winner.textContent=" No one, it's a Tie Match";
+                    }
+                } 
+                else if(humanChoice=="paper"){
+                    if(botVal=="scissors"){
+                        winner.textContent="The winner is: Bot";
+                    }else if(botVal=="rock"){
+                        winner.textContent="The winner is: Human";
+                    }else{
+                        winner.textContent=" No one, it's a Tie Match";
+                    }
+                } 
+                else{
+                    if(botVal=="paper"){
+                        winner.textContent="The winner is: Human";
+                    }else if(botVal=="rock"){
+                        winner.textContent="The winner is: Bot";
+                    }else{
+                        winner.textContent=" No one, it's a Tie Match";
+                    }
+                } 
+                console.log(winner.textContent);
+            })
+        })
+
+    </script>
+</body>
+</html>
