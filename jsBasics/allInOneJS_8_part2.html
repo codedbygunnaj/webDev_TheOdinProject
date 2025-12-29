@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrayShit</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 2];
+        let arrayLike = {0: "something",length: 1};
+        console.log( arr.concat(arrayLike) );
+
+        arr=[1,2]
+        arrayLike={0:"something",1:"special",length:2,[Symbol.isConcatSpreadable]:true}
+        console.log( arr.concat(arrayLike) );
+
+        //forEach used to run function on all elements of an array:
+        fruits=["mango","banana","dragonFruit","cherry","jackFruit"]
+        fruits.forEach((fruit)=>{   
+            if(fruit=="dragonFruit"){
+                console.log("enderDragon milgaya hai, YAY!")
+            }
+        })
+
+        //arr.forEach(function(item, index, array) {
+            // ... do something with an item
+        // });
+
+        // arr.indexOf(item, from) – looks for item starting from index from, and returns the index where it was found, otherwise -1.
+        // arr.includes(item, from) – looks for item starting from index from, returns true if found.
+        let ar = [1, 0, false];
+        console.log( ar.indexOf(0) ); // 1
+        console.log( ar.indexOf(false) ); // 2
+        console.log( ar.indexOf(null) ); // -1
+        console.log( ar.includes(1) ) ; // true
+
+        //includes is better as handles NaN too!
+
+        // let result = arr.find(function(item, index, array) {}); -> just like forEach, funciton iterated for each element and using that answer is generated!
+        let info=[
+            {name:"Gunaj",id:11},
+            {name:"Raja",id:15},
+            {name:"Kashmir",id:19}
+        ]
+        let infoOfPersonWithId15=info.find(person=>person.id==15)
+        console.log(infoOfPersonWithId15);
+
+        //similarly can find Index and LastIndex too:
+
+        let indexOfRaja=info.findIndex(item=>item.name=="Raja")
+        console.log(indexOfRaja)
+        
+        info=[
+            {name:"Gunaj Boi",id:11},
+            {name:"Raja",id:15},
+            {name:"Kashmir",id:19},
+            {name:"Raja Kishori",id:23},
+            {name:"Raja",id:30}
+        ]
+        console.log(info)
+        let indexOfLastRaja=info.findLastIndex(item=>item.name=="Raja")
+        console.log(indexOfLastRaja)
+
+        //filter: find ka baap, returns all following the asked condition:
+        let allRajas=info.filter(item=>item.name=="Raja")
+        console.log(allRajas)
+
+        //map used to run any function over all elements and save the results in an array:
+        let findLetterO=info.map(item=>item.name.includes('o'))
+        console.log(findLetterO)
+
+        //sort: we send a fn n that's applied on all elements:
+        let arry = [ 1, 2, 15 ];
+        arry.sort(function(a, b) { return a - b; });
+        // alert(arry);  // 1, 2, 15
+
+        // arr.sort( (a, b) => a - b );
+        
+        arry.reverse()
+        // alert(arry);  // 15,2,1
+
+        let names="Gurmeet, Joginder, Shailash, Kamleshwar"
+        let arru=names.split(",")
+        console.log(arru)
+
+        for(let name of arru){
+            console.log(`A message to ${name} is sent!`)
+        }
+
+        // let arr = 'Bilbo, Gandalf, Nazgul, Saruman'.split(', ', 2);
+        let nameSplitWhole="Gugulunath"
+        nameSplit=nameSplitWhole.split("")
+        console.log(nameSplit)
+
+        // The call arr.join(glue) does the reverse to split. It creates a string of arr items joined by glue between them.
+        console.log(nameSplit.join(""))
+        console.log(nameSplit.join("?"))
+
+        
+    </script>
+</body>
+</html>

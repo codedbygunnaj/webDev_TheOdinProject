@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert('HelloWorld')" style="background-color: black;color: oldlace;">Interact!</button>
+    <button id="btn" style="background-color: black;color: oldlace;">Touch Me!</button>
+    <button id="btnNew" style="background-color: black;color: oldlace;">Click Me Pls!</button>
+    <button id="btN" style="background-color: black;color: oldlace;">Click Me!</button>
+
+    <br>
+    <br>
+    <button id="btn1" class="allInOne">press1</button>
+    <button id="btn2" class="allInOne">press2</button>
+    <button id="btn3" class="allInOne">press3</button>
+    <button id="btn4" class="allInOne">press4</button>
+    <script>
+//Q1:
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 28 };
+        let users = [ john, pete, mary ];
+        let names = new Array();
+        users.forEach(item=>names.push(item.name))
+        console.log( names ); 
+//Q2:
+        function getAverageAge(a){
+        
+        }
+        john = { name: "John", age: 25 };
+        pete = { name: "Pete", age: 30 };
+        mary = { name: "Mary", age: 29 };
+        let arr = [ john, pete, mary ];
+        console.log( getAverageAge(arr) );
+
+        let divEl=document.createElement("div");
+        // saves in memory but not in dom, for that:
+        divEl.innerHTML="Hello Gululu";
+        document.body.appendChild(divEl)
+
+        // parentNode.appendChild(childNode) - appends childNode as the last child of parentNode.
+        // parentNode.insertBefore(newNode, referenceNode) - inserts newNode into parentNode before referenceNode.
+        divEl.style.color="Red";
+        divEl.style.fontWeight="bolder";
+        // div.setAttribute("style", "color: blue; background: white;");
+
+        divEl.setAttribute("id","myDiv");
+        console.log(divEl.getAttribute("id"))
+
+        const btn=document.getElementById("btn")
+        validFunction=()=>alert("TOuched mE!")
+        btn.onclick=validFunction
+
+        const btnNew=document.querySelector("#btnNew");
+        btnNew.addEventListener("click",()=>{
+            alert("Event wala button pressed")
+        })
+
+        btn.addEventListener("click", function (e) {
+          console.log(e);
+          console.log(e.target);
+          console.log(e.target.innerHTML);
+        });
+
+        const btN=document.querySelector("#btN")            
+        btN.addEventListener("dblclick",function(e){
+            e.target.style.backgroundColor="blue";
+            e.target.style.borderRadius="2px";
+        })
+
+        //allInOneListener
+        const btns=document.querySelectorAll(".allInOne")
+        btns.forEach((bt)=>{
+            bt.addEventListener("click",()=>{
+                console.log(bt.id)
+            })
+        })
+    </script>
+</body>
+</html>

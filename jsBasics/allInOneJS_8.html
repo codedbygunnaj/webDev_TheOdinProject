@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArrayCheck</title>
+</head>
+<body>
+    <script>
+        // let arr = new Array();
+        let a=[]  //empty array
+        console.log(a)
+        a=["a","b","c","d"]  //first index:0
+        console.log(a)
+        console.log(a[0])
+        console.log(a[1])
+        console.log(a[8])
+        console.log(a.length)
+
+        a.push("e")
+        console.log(a[4])
+        a.push(69)
+        console.log(a)
+        a.push([71,73,75,77,79])
+        console.log(a)
+        console.log(a[6][3]) //77
+
+        //can use .at as well instead of indexing!
+
+        let fruits = ["Apple", "Orange", "Pear"];
+        // alert( fruits.pop() ); 
+        fruits.push("mango");
+        // alert( fruits ); 
+
+        //shift selects leftmost element, shifts leftward, second element [1] becomes first element [0]
+        fruits = ["Apple", "Orange", "Pear"];
+        // alert( fruits.shift() ); // remove Apple and alert it       
+        // alert( fruits ); // Orange, Pear
+
+        //unshift(): used to add at elemtn [0] and shifts to right side:
+        // alert( fruits ); 
+        fruits.unshift("Mango")
+        // alert( fruits ); 
+
+        //loops:
+        let arr = ["Apple", "Orange", "Pear","Guava"];
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i])
+        }
+        for (let fruit of arr) {
+            console.log(fruit)
+        }
+        for (let key in arr) {
+            console.log(arr[key]); // Apple, Orange, Pear
+            console.log(key); 
+        }
+
+        // let arr = new Array("Apple", "Pear", "etc");
+
+        // arr.splice(start[, deleteCount, elem1, ..., elemN])
+        // arr.splice(start[2,3,"Apple"]) //deletes 2 and 3 and pushes apple immediately after deleting 2 and 3
+        console.log(arr)
+        // arr = ["Apple", "Orange", "Pear"];
+        arr.splice(2,"Mango","Strawnberry","Lemon") //"Apple", "Orange","Mango","Strawnberry","Lemon"
+        console.log(arr)
+
+        let ar = ["I", "study", "JavaScript", "right", "now"];
+        // remove 2 first elements
+        let removed = ar.splice(0, 2);
+        // alert( removed ); // "I", "study" <-- array of removed elements
+    </script>
+</body>
+</html>
