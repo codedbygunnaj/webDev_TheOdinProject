@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+    <style>
+        .rps{
+            background-color: rgba(46, 2, 2, 0.608);
+            color:beige;
+            border: 3px solid yellowgreen;
+            margin:3px;
+            height: 30px;
+            width: 100px;
+            border-radius: 10px;    
+            font-weight: bolder;
+        }
+        .btnMode{
+            background-color: rgba(46, 2, 2, 0.608);
+            color:beige;
+            border: 3px solid yellowgreen;
+            margin:3px;
+            height: 30px;
+            width: 180px;
+            border-radius: 10px;    
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div id="selection">
+        <button class="btnMode">bot</button>
+        <button class="btnMode">pvp</button>
+    </div>
+    <P>Press a Button:</P>
+    <button class="rps">Rock</button>
+    <button class="rps">Paper</button>
+    <button class="rps">Scissors</button>
+    <div id="human"></div>
+    <div id="bot"></div>
+    <div id="winner"></div>
+    <div id="turnInfo"></div>
+    <div id="scoreBoard"></div>
+    <button id="resetBtn">Reset Scores</button>
+    <script>
+
+        let max=3
+        let human=document.getElementById("human");
+        let bot=document.getElementById("bot");
+        let winner=document.getElementById("winner");
+        let botVal=""
+        let winner1=""
+        let winner2=""
+        const buttons=document.querySelectorAll(".rps");
+        const mode=document.querySelectorAll(".btnMode");
+        let turnInfo=document.querySelector("#turnInfo");
+        let scoreBoard=document.querySelector("#scoreBoard");
+        let humanScore = 0;
+        let botScore = 0;
+        let player1Score = 0;
+        let player2Score = 0;
+
+        function logicFunction(humanChoice,botVal){
+            if(gameMode=="bot"){
+                winner1="human"
+                winner2="bot"
+            }else{
+                winner1="player1"
+                winner2="player2"
+            }
+            if(humanChoice=="rock"){
+                if(botVal=="scissors"){
+                    winner.textContent=`The winner is: ${winner1}`;
+                    if(gameMode==="bot"){
+                        humanScore++;
+                    }else{
+                        player1Score++;
+                    }
+                }else if(botVal=="paper"){
+                    winner.textContent=`The winner is: ${winner2}`;
+                    if(gameMode==="bot"){
+                        botScore++;
+                    }else{
+                        player2Score++;
+                    }
+                }else{
+                    winner.textContent=" No one, it's a Tie Match";
+                }
+            } 
+            else if(humanChoice=="paper"){
+                if(botVal=="scissors"){
+                    winner.textContent=`The winner is: ${winner2}`;
+                    if(gameMode==="bot"){
+                        botScore++;
+                    }else{
+                        player2Score++;
+                    }
+                }else if(botVal=="rock"){
+                    winner.textContent=`The winner is: ${winner1}`;
+                    if(gameMode==="bot"){
+                        humanScore++;
+                    }else{
+                        player1Score++;
+                    }
+                }else{
+                    winner.textContent=" No one, it's a Tie Match";
+                }
+            } 
+            else{
+                if(botVal=="paper"){
+                    winner.textContent=`The winner is: ${winner1}`;
+                    if(gameMode==="bot"){
+                        humanScore++;
+                    }else{
+                        player1Score++;
+                    }
+                }else if(botVal=="rock"){
+                    winner.textContent=`The winner is: ${winner2}`;
+                    if(gameMode==="bot"){
+                        botScore++;
+                    }else{
+                        player2Score++;
+                    }
+                }else{
+                    winner.textContent=" No one, it's a Tie Match";
+                }
+            } 
+
+            if(gameMode=="bot"){
+                scoreBoard.innerHTML=`Score of Human: ${humanScore}<br>Score of bot: ${botScore}`
+            }else{
+                scoreBoard.innerHTML=`Score of Player1: ${player1Score}<br>Score of Player2: ${player2Score}`
+            }
+            return winner.innerHTML;
+        }
+
+        let turn="p1";
+        let p1Choice=null;
+        let gameMode=null;
+
+        mode.forEach(bMode=>{
+            bMode.addEventListener("click",(event)=>{
+                const bt=event.target;
+                gameMode=bt.innerHTML;
+                turnInfo.textContent="Player 1's turn";
+                turnInfo.style.display = "block";
+                turn="p1";
+            })
+        })
+
+        buttons.forEach(button=>{
+            button.addEventListener("click",(event)=>{
+                if(gameMode==null){
+                    return;
+                }
+                else if(gameMode=="bot"){
+                    turnInfo.style.display = "none";
+                    const choices=["rock","paper","scissors"]
+                    botVal=choices[Math.floor(Math.random()*choices.length)];
+                    bot.textContent=`Bot chose: ${botVal}`;
+
+                    const humanChoice=event.target.textContent.toLowerCase();
+                    
+                    const btn=event.target;
+                    const ogColor=btn.style.backgroundColor;
+                    btn.style.backgroundColor="purple";
+                    setTimeout(()=>{
+                        btn.style.backgroundColor=ogColor;
+                    },500); //0.5sec
+
+                    console.log(`Bot choice is : ${botVal}`);
+                    console.log(`Human choice is : ${humanChoice}`);
+                    human.textContent=`You chose: ${humanChoice}`;
+                    
+                    winner.innerHTML= logicFunction(humanChoice,botVal);
+                    console.log(winner.innerHTML);
+                }else{
+                    if(turn=="p1"){
+                        human.textContent = "";
+                        bot.textContent = "";
+                        winner.textContent = "";
+                        p1Choice = event.target.textContent.toLowerCase();
+                        turn = "p2";
+                        turnInfo.textContent = "Player 2's turn";
+                        turnInfo.style.display = "block";
+                        return;
+                    }
+                    const p2Choice = event.target.textContent.toLowerCase();
+                    turnInfo.style.display="none"
+                    human.textContent = `Player 1 chose: ${p1Choice}`;
+                    bot.textContent = `Player 2 chose: ${p2Choice}`;
+                    winner.innerHTML = logicFunction(p1Choice, p2Choice);
+                    console.log(winner.innerHTML);
+
+                    turn = "p1";
+                    p1Choice = null;
+                }
+            })
+        })
+
+        const resetBtn = document.getElementById("resetBtn");
+            resetBtn.addEventListener("click", () => {
+                humanScore = 0;
+                botScore = 0;
+                player1Score = 0;
+                player2Score = 0;
+
+                human.textContent = "";
+                bot.textContent = "";
+                winner.textContent = "";
+                turnInfo.style.display = "none";
+
+                if (gameMode === "bot") {
+                    scoreBoard.innerHTML = `Score of Human: 0<br>Score of bot: 0`;
+                } else if (gameMode === "pvp") {
+                    scoreBoard.innerHTML = `Score of Player1: 0<br>Score of Player2: 0`;
+                } else {
+                    scoreBoard.textContent = "";
+                }
+                
+                turn = "p1";
+                p1Choice = null;
+            });
+
+    </script>
+</body>
+</html>
