@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnScreenCalculator</title>
+    <style>
+        body{
+            display:flex;
+            margin:0;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            border:2px solid black;
+            height: 95vh;
+            width: 30vw;
+            min-width: 280px;     
+            margin-top:15px;
+            margin-left:15px;
+            margin-bottom:15px;
+        }
+        #containerDisplay{
+            
+            height:15%;
+            border-bottom:2px solid black;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding:16px;
+            font-size: 2.5rem;  
+            font-family: monospace;
+        }
+        #containerCells{
+            display: grid;
+            flex:1;
+            grid-template-columns: repeat(4,1fr);
+            gap:8px;
+            padding:8px;
+        }
+        .cells{
+            /* aspect-ratio: 1/1; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size:1.4rem;
+            border:1px solid #333;
+            cursor:pointer;
+            user-select:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="containerDisplay"></div>
+        <div id="containerCells"></div>
+    </div>
+    <script>
+        let containerDisplay=document.querySelector("#containerDisplay")
+        let containerCells=document.querySelector("#containerCells")
+
+        const buttons = [
+            "7","8","9","/",
+            "4","5","6","*",
+            "1","2","3","-",
+            "0",".","=","+",
+            "AC","⌫"
+        ];
+        buttons.forEach(cell=>{
+            const btn=document.createElement("button");
+            btn.classList.add("cells")
+            btn.textContent=cell;
+            containerCells.appendChild(btn);
+        });
+
+        let firstNumber="";
+        let secondNumber="";
+        let operator=null;
+        let shouldResetDisplay=false;
+
+        containerCells.addEventListener("click",(e)=>{
+            if(!e.target.classList.contains("cells"))return;
+            handleInput(e.target.textContent);
+        })
+
+        function handleInput(val){
+            if(!isNaN(val) || val==="."){
+                handleNumber(val);
+            }
+            else if(["+","-","*","/"].includes(val)){
+                containerDisplay.textContent="";
+                handleOperator(val);
+            }else if(val==="="){
+                handleEquals();   
+            }else if(val==="AC"){
+                containerDisplay.textContent="";
+                resetState();
+            }else if(val==="⌫"){
+                handleBackspace();
+            }
+        }
+
+        function handleNumber(val){
+            if(!operator){
+                if(val==="."&& firstNumber.includes("."))return; // 2 times . not added to a number 
+                firstNumber+=val;
+                containerDisplay.textContent=firstNumber;
+            }else{
+                if (val === "." && secondNumber.includes(".")) return;
+                secondNumber+=val;
+                containerDisplay.textContent=secondNumber;
+            }
+        }
+
+        function handleOperator(op){
+            if(firstNumber=="") return;
+            operator=op;
+        }
+
+        function handleEquals(){
+            if(!firstNumber || !operator || !secondNumber){return;}
+            firstNumber=Number(firstNumber);
+            secondNumber=Number(secondNumber);
+            let res=0;
+            switch (operator) {
+                case "+":
+                    res=firstNumber+secondNumber;
+                    break;
+                case "-":
+                    res=firstNumber-secondNumber;
+                    break;
+                case "*":
+                    res=firstNumber*secondNumber;
+                    break;
+                case "/":
+                    if(secondNumber==0){
+                        containerDisplay.textContent=`Undefined`;    
+                        resetState();
+                        return;
+                    }
+                    res=firstNumber/secondNumber
+                    break;
+                default:
+                    break;
+            }
+            containerDisplay.textContent=res;
+            firstNumber=res;
+            operator=null;
+            secondNumber="";
+        }
+        function resetState(){
+            firstNumber = "";
+            secondNumber = "";
+            operator = null;
+        }
+        function handleBackspace(){
+            if(secondNumber){
+                secondNumber=secondNumber.slice(0,-1); //0 to secondLast place
+                containerDisplay.textContent = secondNumber;
+            }else if(operator){
+                operator=null;
+                containerDisplay.textContent = firstNumber;
+            }else if(firstNumber){
+                firstNumber=firstNumber.slice(0,-1);
+                containerDisplay.textContent = firstNumber;
+            }
+        }
+    </script>
+</body>
+</html>

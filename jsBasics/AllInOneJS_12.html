@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        let o1=new Object();
+        console.log(o1);
+        console.log(typeof o1);
+        o1={
+            name:"John",
+            age:20
+        }
+        console.log(o1);
+        console.log(o1.name);
+        // alert(`John's age is: ${o1.age}`)
+
+        o1.gender="Female";
+        console.log(o1);
+
+        delete o1.age;
+        console.log(o1);
+
+        // o1.`she like me`=32;
+        o1={
+            name:"ganga",
+            age:10,
+            gender:"female",
+            "likes to see":"birds"
+        };
+        console.log(o1);
+
+        //can also do:
+        o1["loves to drink"]="Water";
+        console.log(o1);
+
+        let fruitName="Mango"//prompt("Which fruit do we have to buy?","Mango");
+        o1[fruitName]=5
+        console.log(o1);
+
+        // can't change __proto to non object type
+        o1.__proto__=5
+        // alert(o1.__proto__) //returning Object Object and not Object Number means not working as it should :. proto always behaves as an object and not as an Number
+
+        console.log("age" in o1)
+        console.log("sex" in o1)
+
+        for(let key in o1){
+            console.log(key)
+            console.log(o1[key])
+        }
+
+        //if integer strings: assigned in ascending order!
+    </script>
+</body>
+</html>
