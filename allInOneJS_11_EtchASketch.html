@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-sketch</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #container {
+            margin-top:20px;
+            width: 500px;
+            height: 500px;
+            display: grid;
+            gap: 1px;
+            border:2px solid black;
+        }
+        .pixel {
+            border: 1px solid darkolivegreen;
+            aspect-ratio: 1/1; /* so height is proportional to width and takes the shape of a square */
+        }
+        .pixel:hover{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <label>
+        Grid size:
+        <input type="range" id="gridSizeSlider" min="4" max="64" value="16">
+        <span id="gridValue">16</span> × <span id="gridValue2">16</span>
+    </label>
+
+    <button id="newGrid">Add a new grid</button>
+    <button id="clearGrid">Clear grid</button>
+    <script>
+        let gridSize = 16;
+        let currentMode = "random";
+
+        const div = document.createElement("div");
+        div.id = "container";
+        document.body.appendChild(div);
+
+        const slider = document.querySelector("#gridSizeSlider");
+        const gridValue = document.querySelector("#gridValue");
+        const gridValue2 = document.querySelector("#gridValue2");
+        const clearGridBtn = document.querySelector("#clearGrid");
+        const newGridBtn = document.querySelector("#newGrid");
+
+        function makeGrid(size) {
+            div.innerHTML = "";
+            div.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+            for (let i = 0; i < size * size; i++) {
+                const pixel = document.createElement("div");
+                pixel.classList.add("pixel");
+                pixel.dataset.darkness = "0";
+                div.appendChild(pixel);
+            }
+        }
+
+        function attachHover() {
+            const pixels = document.querySelectorAll(".pixel");
+
+            pixels.forEach(pixel => {
+                pixel.addEventListener("mouseenter", () => {
+                    let darkness = Number(pixel.dataset.darkness);
+
+                    if (darkness === 0) {
+                        const r = Math.floor(Math.random() * 256);
+                        const g = Math.floor(Math.random() * 256);
+                        const b = Math.floor(Math.random() * 256);
+                        pixel.style.backgroundColor = `rgb(${r},${g},${b})`;
+                    }
+
+                    darkness += 0.05;
+                    if (darkness > 1) darkness = 1;
+
+                    pixel.style.filter = `brightness(${1 - darkness})`;
+                    pixel.dataset.darkness = darkness;
+                });
+            });
+        }
+
+        function buildGrid(size) {
+            makeGrid(size);
+            attachHover();
+        }
+
+        // INITIAL GRID
+        buildGrid(gridSize);
+
+        // SLIDER
+        slider.addEventListener("input", () => {
+            gridSize = slider.value;
+            gridValue.textContent = gridSize;
+            gridValue2.textContent = gridSize;
+        });
+
+        // NEW GRID
+        newGridBtn.addEventListener("click", () => {
+            buildGrid(gridSize);
+        });
+
+        // CLEAR GRID
+        clearGridBtn.addEventListener("click", () => {
+            const pixels = document.querySelectorAll(".pixel");
+            pixels.forEach(pixel => {
+                pixel.style.backgroundColor = "";
+                pixel.style.filter = "";
+                pixel.dataset.darkness = "0";
+            });
+        });
+    </script>
+
+</body>
+</html>
