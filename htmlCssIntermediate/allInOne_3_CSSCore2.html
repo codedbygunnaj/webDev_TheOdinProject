@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 200vh;
+        }
+        .positioning{
+            background-color:black;
+            width:125px;
+            height:125px;
+            border:5px solid yellowgreen;
+            color:seashell;
+            margin:3px;
+            text-align: center;
+        }
+/* Static is the default position of every element, and properties top, right, bottom, and left do not affect the position of the element. */
+        .box1{
+            position: fixed;
+            top:10px;
+            left:20px;
+        }
+        .box2{
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+        .box3{
+            position: relative;
+            
+        }
+        .box4{
+            position: sticky;
+            /* hybrid of relative + fixed */
+            top:0px;
+            
+        }
+        .box5{
+            background: linear-gradient(69deg,yellow,red);
+            /* linear-gradient generates a gradient image using the parameters it’s been given. It needs at least two color arguments: colors to transition between. Additionally, you can set the angle of direction of the gradient line (like we’ve done in the example), add more color values, etc . */
+            width:125px;
+            height:125px;
+            border:5px solid yellowgreen;
+            color:seashell;
+        }
+        #container {
+            display: flex;
+            box-sizing: border-box;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 6px solid black;
+            resize: both;
+            overflow: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #iconHolder {
+            width: min(150px, 100%);
+            height: min(150px, 100%);
+            box-sizing: border-box;
+            border: 6px solid blue;
+            /* 
+                The min() function works just like JavaScript’s Math.min() and Ruby’s Array#min methods. It takes a list of values separated by commas and returns the smallest one.
+                
+                This checks whether 100% of the parent element’s width is smaller than 150px. If 100% would be narrower than 150px, the element will take up the full width of the container (100%). Otherwise, it will be 150px wide. 
+            */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="positioning box1">Box1</div>
+    <div class="positioning box2">Box2</div>
+    <div class="positioning box3">Box3</div>
+    <div class="positioning box4">Box4</div>
+    <div class="box5">Box4</div>
+    <br><br><br><br><br>
+    <div id="text">resize me by clicking in the bottom right</div>
+    <div id="container">
+        <img
+            id="iconHolder"
+            src="https://avatars.githubusercontent.com/u/4441966?s=200&v=4"
+            alt="odin"
+        />
+    </div>
+</body>
+</html>

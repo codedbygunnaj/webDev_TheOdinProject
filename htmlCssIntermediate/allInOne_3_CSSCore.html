@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background and Types</title>
+    <style>
+        .touchMe{
+            width:60px;
+            height:60px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            border:1px solid;
+            opacity: 0.69;
+        }
+        .touchMeNot{
+            background-image: url(plant1.jpg);
+            width:100px;
+            height:100px;
+            background-size: contain;
+            /* cover → fill whole box (cropped maybe)
+            contain → show whole image (may leave empty)
+            exact sizes (100px 50px) */
+
+            /* overflow: scroll; Not affects bg */
+        }
+        .touchMeNotPlant{
+            width:100px;
+            height:100px;
+            background-size: contain;
+            background-image: url(plant1.jpg),url(plant2.jpg);
+            /* Higher-level first; last one render bottom. */
+        }
+            /* 
+            div { background-repeat: no-repeat; }
+            div { background-position: center; }
+            div { background-attachment: fixed; }
+            
+            "SHORTHAND"
+            div {
+                background: url(img.jpg) no-repeat center/cover #222;
+            }
+            */
+            .circle{
+                width:100px;
+                height:100px;
+                border-radius:50%;
+                border:2px solid black;
+            }
+            .btn{
+                border: none;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+            .txt{
+                border: none;
+                border-bottom: 2px solid #666;
+            }
+            .test1{
+                max-width:fit-content;
+                padding: 3px;
+                color:yellow;
+                border:2px solid purple;
+            }
+            .test1:hover{
+                color:red;
+                border:2px solid black;
+            }
+            .test2{
+                color:black;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                border:none;
+                border-radius: 8px;
+            }
+            .test2:hover{
+                background-color:khaki;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                cursor: pointer;
+            }
+            .txty:focus{
+                background-color: black;
+                color:white;
+            }
+            input:focus-visible {
+                outline: 2px solid dodgerblue;
+            }
+            .emojify::before{
+                content: '😎 😄 🤓';
+            }
+            .emojify::after{
+                content: '🤓 😄 😎';
+            }
+    </style>
+</head>
+<body>
+    <div class="touchMe"><h1>DD</h1></div>
+    <div class="touchMeNot"><h1>DD</h1></div>
+    <div class="touchMeNotPlant"><h1>DD</h1></div>
+    <div class="circle"><h1>DD</h1></div>
+    <button class="btn">HI</button>
+    <h1 class="txt">hi</h1>
+    <!-- 
+        Let’s have a look at some more ways we can access different elements without referring to their classes. Here are three new selectors to do just that.
+            > - the child combinator
+            + - the adjacent sibling combinator
+            ~ - the general sibling combinator
+        We’ll tackle some practical examples using this sample markup.
+    -->
+    <div class="test1">DD</div>
+    <button class="test2">CheckMe</button>
+    <input class="txty" placeholder="hi">
+
+    <!-- <h1 class="txt" tabindex="0">hi</h1> We've made h1 class focusable via tabIndex=0 which means: element can receive focus via keyboard / click-->
+    <div>Let's <span class="emojify">emojify</span>this span</div>
+
+    <!-- 
+        Let’s look at some examples for basic usage.
+            [attribute] - This general selector will select anything where the given attribute exists. Its value doesn’t matter.
+
+            selector[attribute] - Optionally we can combine our attribute selectors with other types of selectors, such as class or element selectors.
+
+            [attribute="value"] - To get really specific, we can use = to match a specific attribute with a specific value.
+
+            Examples:
+             [src] {
+                /* This will target any element that has a src attribute. */
+            }
+
+            img[src] {
+                /* This will only target img elements that have a src attribute. */
+            }
+
+            img[src="puppy.jpg"] {
+                /* This will target img elements with a src attribute that is exactly "puppy.jpg" */
+            }
+    -->
+        <br>
+</body>
+</html>

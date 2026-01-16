@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVGs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">s
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/couture" type="text/css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        .container {
+            max-width: 200px;
+            margin: auto;
+        }
+
+        .svg-circle:hover + .svg-text-group {
+            opacity: 0;
+        }
+
+        table,th,td,tr{
+            border:1px solid black;
+            /* border-collapse:collapse; */
+        }
+
+        @font-face {
+            font-family: my-cool-font;
+            src: url(../fonts/the-font-file.woff);
+        }
+
+        h1 {
+            font-family: my-cool-font, sans-serif;
+        }
+
+        h1 {
+            font-family: 'COUTUREBold';
+            margin: 0;
+            font-size: 38px;
+        }
+
+        .wide {
+            font-size: 24px;
+            letter-spacing: 0.5em;
+        }
+
+        .narrow {
+            font-size: 48px;
+            letter-spacing: -0.15em;
+        }
+        p{
+            line-height: 1.3;
+        }
+        .hype{
+            text-transform:uppercase;
+            text-shadow: 1.5px 3px 3px purple;
+            /* offset-x | offset-y | blur-radius | color */
+        }
+        .texty{
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;                      
+        }
+    </style>
+</head>
+<body>
+    <p>SVGs are a scalable image format, which means they will easily scale to any size and retain their quality without increasing their filesize.</p>
+    <h3 class="texty">“SVG” stands for “Scalable Vector Graphics”</h3>
+    <p>SVGs are often used for:</p>
+    <ul>
+        <li class="items1">Icons</li>
+        <li class="items2">Graphs/Charts</li>
+        <li class="items3">Large, simple images</li>
+        <li class="items4">Patterned backgrounds</li>
+        <li class="items5">Applying effects to other elements via SVG filters</li>
+    </ul>
+
+    <p>SVGs are defined using XML and not HTML: Extensible Markup Language <em>(HTML-like syntax which is used for lots of things, from APIs, to RSS, to spreadsheet and word editor software.)</em></p>
+
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect x=0 y=0 width=50 height=15 />
+    <circle class="svg-circle" cx="50" cy="50" r="10"/> 
+    </svg> -->
+
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x=0 y=0 width=100 height=100 fill="burlywood"/>
+            <path d="M 10 10 H 90 V 90 L 10 60" fill="transparent" stroke="black" stroke-width="3"/>
+            <circle cx=50 cy=50 r=20 class="svg-circle"/>
+            <g class="svg-text-group">
+            <text x="20" y="25" rotate="10" id="hello-text">Touch Me!</text>
+            <use href="#hello-text" x="-10" y="65" fill="white"/>
+            </g>
+        </svg>
+    </div>
+
+    <button style="cursor: pointer; background-color: black; color: beige;">For More Details, <a href="https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-svg" style="color:aquamarine">click here</a></button>
+
+    <table style="border:1px solid black;">
+        <caption>Name of the Girls</caption>
+        <tr style="border:1px solid black;">
+        <th style="border:1px solid black;">Name</th>
+        <th style="border:1px solid black;">Age</th>
+        </tr>
+        <tr><td style="border:1px solid black;">Radha</td><td style="border:1px solid black;">20</td></tr>
+        <tr><td style="border:1px solid black;">Laxmi</td><td style="border:1px solid black;">19</td></tr>
+        <tr><td style="border:1px solid black;">Parvati</td><td style="border:1px solid black;" rowspan="2">18</td></tr>
+        <tr><td style="border:1px solid black;" colspan="2">Saraswati</td><td style="border:1px solid black;">17</td></tr>
+    </table>
+    <table>
+        <thead>
+            <tr>
+            <th rowspan="2">Grade</th>
+            <th rowspan="2">Yield Point</th>
+            <th colspan="2">Ulimate tensile Strength</th>
+            <th rowspan="2">Per cent elong. 50.8 mm or 2 in.</th>
+            <th rowspan="2">Per cent reduct. area.</th>
+            </tr>
+        </thead>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>kg/mm2</td>        
+            <td>lb/in2</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Hard</td>        
+            <td>0.45 ultimate</td>        
+            <td>56.2</td>        
+            <td>80,000</td>        
+            <td>15</td>        
+            <td>20</td>        
+        </tr>
+
+    </table>
+
+    <ol>
+        <li>Absolute Units</li>
+        <li>pixel "px": absolute one as size remains same throughout the website and not relative to any other element</li>
+        <li>inch (in) and centimeters (cm) are other absolute units</li>
+        <li>Relative Units: <p>Relative units are units that can change based on their context. There are several of them that you are likely to encounter and want to use.</p></li>
+        <li><strong>em and rem </strong>both refer to a font size, though they are often used to define other sizes in CSS. You’ll see both of them often so we’re going to explain both, but as a rule-of-thumb, prefer rem.</li>
+        
+        <li>1em is the font-size of an element (or the element’s parent if you’re using it to set font-size). So, for example, if an element’s font-size is 16px, then setting its width to 4em would make its width 64px (16 * 4 == 64).</li>
+        <li></li>
+        <li>1rem is the font-size of the root element (either :root or html). The math works the same with rem as it did with em, but without the added complexity of keeping track of the parent’s font size. Relying on em could mean that a particular size could change if the context changes, which is very likely not the behavior you want.</li>
+        <li></li>
+        <li>Viewport units</li>
+        <li>The units vh and vw relate to the size of the viewport. Specifically, 1vh is equal to 1% of the viewport height and 1vw is equal to 1% of the viewport width. These can be useful any time you want something to be sized relative to the viewport, examples including full-height heroes, full-screen app-like interfaces.</li>
+    </ol>
+    <p>
+        It is also possible to use a font that you have downloaded from the web. In your CSS file, you import and define a custom font using the @font-face rule-of-thumb
+        <!-- See CSS Segment -->
+    </p>
+
+    <h1>Hello World!</h1>
+    <h1 class="wide">Hello World!</h1>
+    <h1 class="narrow">Hello World!</h1>
+
+    <p class="hype">Lorem ipsum dolor sit.</p>
+</body>
+</html>
