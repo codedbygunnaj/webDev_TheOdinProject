@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms-2</title>
+    <style>
+        input:valid{
+            border-color: green;
+        }
+        input:invalid{
+            border-color: red;  
+        }
+    </style>
+</head>
+<body>
+    <!-- <form action="https://httpbin.org/" method="post"> -->
+    <form action="#">
+        <label>Enter a number>10 && number<15 else you'll fail the validation</label>
+        <input type="number" min="10" value="0" max="15">
+
+        <label for="mail">Email</label>
+        <input type="email" id="mail">
+        
+        <label for="url">URL</label>
+        <input type="url" id="url">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

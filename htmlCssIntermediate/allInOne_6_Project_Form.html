@@ -1,0 +1,138 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form-Project</title>
+        <style>
+            body{
+                background-color: rgb(16, 15, 15);
+            }
+            .page{
+                display: flex;
+                justify-content: center;
+                height: 100vh;
+            }
+            .card{
+                display: flex;
+                width: 80vw;
+                max-width: 1200px;
+            }
+            .image-section{
+                flex:1;
+                position: relative;
+            }
+            .image-section img{
+                width: 100%;    
+                height: 100vh;
+                object-fit: cover;
+                z-index: 0;
+            }
+            .form-section{
+                background-color: rgb(251, 241, 241);
+                display: flex;
+                padding: 60px;
+                flex-direction: column;
+                flex:1;
+                justify-content: space-evenly;
+            }
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .field {
+                display: flex;
+                flex-direction: column;
+            }
+
+            fieldset{
+                border-color: transparent;
+                background-color: white;    
+                /* max-width: 100%; for puri width of flex-form parent wali */
+                /* border-shadow?? for effect like pic */
+            }
+            #btn{
+                border:none;
+                background-color: green;
+                text-shadow: ;
+                color:whitesmoke;
+                border-radius: 5px;
+                padding:10px;
+            }
+            input:valid{
+                border-color: green;
+            }
+            input:invalid{
+                border-color: red;
+            }
+            .slidebar{
+                position: absolute;
+                top: 40px;
+                left: 40px;
+                color: white;
+                font-size: 2rem;
+                font-weight: 700;
+                z-index: 2;
+                background-color: rgba(255, 255, 255, 0.107);
+                width: 100%;
+                text-align: center;
+                margin-top:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <div class="card">
+                <div class="image-section">
+                    <img src="plant.jpg" alt="plant">
+                    <div class="slidebar"><h1>GUNAJ</h1></div>
+                </div>
+                <div class="form-section">
+                    <div>
+                        <p> This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams.<strong>Sign up</strong> now to get started.</p>
+                        <p><em>You know you want to.</em></p>
+                    </div>
+                    <form>
+                        <fieldset>
+                            <h4>Let's do this!</h4>
+                            <div class="form-row">
+                                <div class="field">
+                                    <label for="fName">FirstName</label>
+                                    <input type="text" name="fname" value="Gunu" id="fName">
+                                </div>
+                                <div class="field">
+                                    <label for="lName">LastName<label>
+                                    <input type="text" name="lname" value="Chugh" id="lName">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="field">
+                                    <label for="mail">Email</label>
+                                    <input type="email" name="mail" value="Gunu@abc.com" id="mail">
+                                </div>
+                                <div class="field">
+                                    <label for="phone">Phone Number<label>
+                                    <input type="text" name="lname" value="Chugh" id="phone">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="field">
+                                    <label for="pswd">Password</label>
+                                    <input type="password" name="mail" id="pswd">
+                                </div>
+                                <div class="field">
+                                    <label for="cpswd">Confirm Password</label>
+                                    <input type="password" name="mail" id="cpswd">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <button type="button" id="btn" style="margin-top: 10px">Create Account</button>
+                        <p>Already have an account? <a href="#" style="text-decoration: none; color:green">Log in</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>

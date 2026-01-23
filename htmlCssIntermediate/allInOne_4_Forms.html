@@ -1,0 +1,141 @@
+<!-- allInOne_4_Forms.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        input:focus-visible{
+            background-color:black;
+            color:whitesmoke;
+        }
+        .BOX{
+            border: 1px solid black;
+            max-width: 100px;
+            margin:2px;
+            margin-left:0px;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <fieldset>
+        <legend>Personal Information</legend>
+        <!-- 
+        action="forms.html" 
+        action="https://httpbin.org/post"
+        -->
+        <label for="textId1">Name: </label> 
+        <input type="text" name="textName" id="textId1" placeholder="Gunu...">
+        <br>
+        <!-- Name: we  need to let the backend, where we send our data, know what each piece of data represents. 
+        Form input should always have a name attribute; otherwise, it will be ignored when the form is submitted.-->
+
+        <label for="userMailID">Email Address:</label>
+        <input type="email" name="userMail" id="userMailID" placeholder="gunu@gmail.com">
+        <br>
+
+        <label for="userPasswordID">Password:</label>
+        <input type="password" name="userPassword" id="userPasswordID" placeholder="gunu123">
+        <br>
+
+        <label for="amountID">Amount:</label>
+        <input type="number" name="amount" id="amountID" placeholder="10000">
+        <br>
+        
+        <label for="dateID">Date</label>
+        <input type="dob" name="date" id="dateID">
+        <br>
+
+        <textarea row="3" col="5">You can describe a day in your life here...</textarea>
+        <br>
+
+        <select name="car" required>
+            <option value="choice">Choose an option</option>
+            <option value="bmw">BMW</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+            <option value="ferrari">Ferrari</option>
+        </select>
+        <br>
+        <select name="car" required>
+            <optgroup label="luxury">
+                <option value="bmw">BMW</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+                <option value="ferrari">Ferrari</option>
+            </optgroup>
+            <optgroup label="sedan">
+                <option value="hyundai">Creta</option>
+                <option value="toyota">Cruiser</option>
+                <option value="tata">Punch</option>
+                <option value="suzuki">Brezza</option>
+            </optgroup>
+        </select>
+        <br>
+    <div class="BOX">
+        <input type="radio" name="family" id="father" value="father">
+        <label for="father">Father</label>
+        <br>
+        <input type="radio" name="family" id="mother" value="mother">
+        <label for="mother">Mother</label>
+        <br>
+        <input type="radio" name="family" id="me" value="me" checked>
+        <label for="me">Me</label>
+        <br>
+    </div>
+    <div class="BOX">
+        <input type="checkbox" name="family" id="father" value="father">
+        <label for="father">Father</label>
+        <br>
+        <input type="checkbox" name="family" id="mother" value="mother">
+        <label for="mother">Mother</label>
+        <br>
+        <input type="checkbox" name="family" id="me" value="me" checked>
+        <label for="me">Me</label>
+        <br>
+    </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <br>
+        <p id="text">Hello World</p>
+        <button id="toggleBtn" type="button">Click to toggle button</button>
+        
+        <br>
+        <p id="text2" class="hidden">Hello World 2</p>
+        <button id="toggleBtn2" type="button">Click to toggle button- Part2</button>
+        <!-- <button type="submit">Submit Button</button> -->
+        </fieldset> 
+    </form>
+
+    <script>
+        const btn=document.getElementById("toggleBtn");
+        const text=document.getElementById("text");
+        btn.addEventListener("click",()=>{
+            if(text.style.display==="none"){
+                text.style.display="block";
+            }else{
+                text.style.display="none";
+            }
+        });
+
+        const btn2=document.getElementById("toggleBtn2");
+        const text2=document.getElementById("text2");
+        btn2.addEventListener("click",()=>{
+            text2.classList.toggle("hidden")
+        })
+    </script>
+</body>
+</html>
+
+<!-- 
+action="https://httpbin.org/post"
+
+"form": {
+    "textName": "Gunaj"
+},  
+-->
